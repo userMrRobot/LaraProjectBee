@@ -11,43 +11,50 @@
     <div class="cart-info">
         <div class="col-lg-5 col-6 cart-if">
             <div class="cart-info-text">
-                <p>Куплено пчел</p>
-                <p>50</p>
+                <p>Куплено пчел: </p>
+                <p>{{$bee->bee_1 + $bee->bee_2 + $bee->bee_3}}</p>
             </div>
             <div class="cart-info-text">
-                <p>Производство меда </p>
-                <p>50 кг / час</p>
+                <p>Производство меда: </p>
+                <p>{{$bee->med}} кг / час</p>
             </div>
             <div class="cart-info-text">
-                <p>Получено меда всего  </p>
-                <p>150 кг</p>
+                <p>Получено меда всего: </p>
+                <p>{{$bee->med_all}} кг</p>
             </div>
             <div class="cart-info-text">
-                <p>Для покупок</p>
-                <p>300 серебра</p>
+                <p>Для покупок: </p>
+                <p>{{$money->silver}} серебра</p>
             </div>
             <div class="cart-info-text">
-                <p>Для покупок</p>
-                <p>500 Золота</p>
+                <p>Для покупок: </p>
+                <p>{{$money->gold}} Золота</p>
             </div>
 
         </div>
         <div class="col-lg-5 col-6 cart-if">
             <div class="cart-info-text">
-                <p>Размер кредита </p>
-                <p>5000 серебра</p>
+                <p>Размер кредита: </p>
+                <p>{{$money->credit_up}} серебра</p>
             </div>
             <div class="cart-info-text">
-                <p>Сумма выплаты </p>
-                <p>5000 серебра</p>
+                <p>Сумма выплаты: </p>
+                <p>{{$money->credit_down}} серебра</p>
             </div>
             <div class="cart-info-text">
-                <p>Кредит получен </p>
-                <p>5000 </p>
+                <p>Кредит погасить до: </p>
+                <p>{{$date->credit_end}} </p>
             </div>
             <div class="cart-info-text">
-                <p>До выплаты кредита  </p>
-                <p>7 дней </p>
+                <p>До выплаты кредита: </p>
+
+                <p>
+                {{$diff}}
+                </p>
+            </div>
+            <div class="cart-info-text">
+                <p>Рублей на вывод: </p>
+                <p>{{$money->rub_down}}</p>
             </div>
         </div>
     </div>
@@ -62,8 +69,8 @@
                 <img src="/img/cart1.png" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">пчела-рабочая</h5>
-                    <p class="card-text">Куплено:<span style="color: green;">
-                              5</span> шт</p>
+                    <p class="card-text">Куплено: <span style="color: green;">
+                              {{$bee->bee_1}}</span> шт</p>
                     <p class="card-text">приносит меда </br>1 кг/час</p>
 
 
@@ -77,7 +84,7 @@
                 <div class="card-body">
                     <h5 class="card-title">пчела трутень</h5>
                     <p class="card-text">Куплено: <span style="color: green;">
-                              2</span> шт</p>
+                             {{$bee->bee_2}}</span> шт</p>
                     <p class="card-text">приносит меда </br> 10 кг/час</p>
 
 
@@ -91,7 +98,7 @@
                 <div class="card-body">
                     <h5 class="card-title">пчела матка</h5>
                     <p class="card-text">Куплено:<span style="color: green;">
-                              20</span> шт</p>
+                              {{$bee->bee_3}}</span> шт</p>
                     <p class="card-text">приносит меда </br>50 кг/час</p>
 
 
@@ -99,7 +106,7 @@
             </div>
         </div>
         <p>ОБЩИЙ объем производимого меда <span style="color: green;">
-                    150</span>  кг/час</p>
+                    {{$bee->med}}</span>  кг/час</p>
     </div>
 
 @endsection

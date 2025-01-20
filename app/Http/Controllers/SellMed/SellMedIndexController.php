@@ -9,6 +9,6 @@ class SellMedIndexController extends Controller
 {
     public function __invoke()
     {
-       return view('SelMed.index');
+       return view('SellMed.index');
     }
 }

@@ -12,6 +12,8 @@ class User extends Authenticatable
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
+    public const ROLE_USER = 1;
+    public const ROLE_ADMIN = 2;
     /**
      * The attributes that are mass assignable.
      *
@@ -38,6 +40,46 @@ class User extends Authenticatable
      *
      * @return array<string, string>
      */
+
+    protected static function booted()
+    {
+        static::created(function ($user) {
+            Bee::create([
+                'user_id' => $user->id,
+            ]);
+
+        });
+
+        static::created(function ($user) {
+            Money::create([
+                'user_id' => $user->id,
+            ]);
+
+        });
+
+        static::created(function ($user) {
+            Date::create([
+                'user_id' => $user->id,
+            ]);
+
+        });
+    }
+
+    public function bee()
+    {
+        return $this->hasOne(Bee::class);
+    }
+
+    public function money()
+    {
+        return $this->hasOne(Money::class);
+    }
+
+    public function date()
+    {
+        return $this->hasOne(Date::class);
+    }
+
     protected function casts(): array
     {
         return [

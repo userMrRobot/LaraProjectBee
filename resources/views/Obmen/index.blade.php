@@ -12,13 +12,13 @@
         <div class=" col-6 offset-3 cart-if">
             <div class="cart-info-text">
                 <div class="side-bar-navigation">
-                    <a class="left-info btn btn-success2" href="{{route('obmen.silverongold.create')}}">Серебро на Золото</a>
+                    <a class="left-info btn btn-success2" href="{{route('obmen.silverongold.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Серебро на Золото</a>
 
                 </div>
             </div>
             <div class="cart-info-text">
                 <div class="side-bar-navigation">
-                    <a class="left-info btn btn-success2" href="#">Золото на рубли</a>
+                    <a class="left-info btn btn-success2" href="{{route('obmen.goldonrub.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Золото на рубли</a>
 
                 </div>
             </div>

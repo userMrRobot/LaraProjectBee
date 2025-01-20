@@ -11,22 +11,22 @@
         <div class="col-lg-5 cart-if">
             <div class="cart-info-text">
                 <p>Псевдоним</p>
-                <p>Никнейм</p>
+                <p>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>
             </div>
 
             <div class="cart-info-text">
                 <p>Куплено пчел</p>
-                <p>22</p>
+                <p>{{$bee->bee_1 + $bee->bee_2 + $bee->bee_3}}</p>
             </div>
         </div>
         <div class="col-lg-5 cart-if">
             <div class="cart-info-text">
                 <p>Для покупок</p>
-                <p>СЕРЕБРА: 22</p>
+                <p>СЕРЕБРА: {{$money->silver}}</p>
             </div>
             <div class="cart-info-text">
                 <p>Для покупок</p>
-                <p>ЗОЛОТА: 22</p>
+                <p>ЗОЛОТА: {{$money->gold}}</p>
             </div>
 
         </div>
@@ -42,7 +42,7 @@
                 <div class="card-body">
                     <h5 class="card-title">пчела-рабочая</h5>
                     <p class="card-text">Куплено:<span style="color: green;">
-                              5</span> шт</p>
+                              {{$bee->bee_1}}</span> шт</p>
                     <p class="card-text">приносит меда </br>1 кг/час</p>
 
 
@@ -56,7 +56,7 @@
                 <div class="card-body">
                     <h5 class="card-title">пчела трутень</h5>
                     <p class="card-text">Куплено: <span style="color: green;">
-                              5</span> шт</p>
+                              {{$bee->bee_2}}</span> шт</p>
                     <p class="card-text">приносит меда </br> 10 кг/час</p>
 
 
@@ -70,14 +70,24 @@
                 <div class="card-body">
                     <h5 class="card-title">пчела матка</h5>
                     <p class="card-text">Куплено:<span style="color: green;">
-                              5</span> шт</p>
+                              {{$bee->bee_3}}</span> шт</p>
                     <p class="card-text">приносит меда </br>50 кг/час</p>
 
 
                 </div>
             </div>
         </div>
-        <p>ОБЩИЙ объем производимого меда <span style="color: green;">
-                    50</span>  кг/час</p>
+        <div class="">
+            <p>ОБЩИЙ объем производимого меда <span style="color: green;">
+                    {{$bee->med}}</span>  кг/час</p>
+
+        </div>
+
+        <div class="">
+            <p>Всего произведено меда <span style="color: green;">
+                    {{$bee->med_all}}</span>  кг/час</p>
+            <a class="btn btn-success" href="{{route('shop.bee2.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Продать мед</a>
+        </div>
+
     </div>
 @endsection

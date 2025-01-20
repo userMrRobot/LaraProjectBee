@@ -11,22 +11,22 @@
         <div class="col-lg-5 cart-if">
             <div class="cart-info-text">
                 <p>Псевдоним</p>
-                <p>Никнейм</p>
+                <p>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>
             </div>
 
             <div class="cart-info-text">
                 <p>Куплено пчел</p>
-                <p>22</p>
+                <p>{{$bee->bee_1 + $bee->bee_2 + $bee->bee_3}}</p>
             </div>
         </div>
         <div class="col-lg-5 cart-if">
             <div class="cart-info-text">
                 <p>Для покупок</p>
-                <p>СЕРЕБРА: 22</p>
+                <p>СЕРЕБРА: {{$money->silver}}</p>
             </div>
             <div class="cart-info-text">
                 <p>Для покупок</p>
-                <p>ЗОЛОТА: 22</p>
+                <p>ЗОЛОТА: {{$money->gold}}</p>
             </div>
 
         </div>
@@ -45,10 +45,7 @@
                         <h5 class="card-title">пчела-рабочая</h5>
                         <p class="card-text">приносит меда </br>1 кг/час</p>
                         <p class="card-text">Цена 500 серебра</p>
-                        <p class="card-text">Максимум можно купить 5 шт</p>
-                        <input type="hidden" name="id" value="1">
-                        <input  type="number" name="countBee" placeholder="сколько" class="form-control" id="exampleInputPassword1">
-                        <button class="btn btn-primary" type="submit">Купить</button>
+                        <a class="btn btn-primary" href="{{route('shop.bee1.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Купить</a>
 
                     </form>
                 </div>
@@ -63,10 +60,7 @@
                         <h5 class="card-title">пчела трутень</h5>
                         <p class="card-text">приносит меда </br> 10 кг/час</p>
                         <p class="card-text">Цена 5 000 серебра</p>
-                        <p class="card-text">Максимум можно купить 5  шт</p>
-                        <input type="hidden" name="id" value="2">
-                        <input  type="number" name="countBee" placeholder="сколько" class="form-control" id="exampleInputPassword1">
-                        <button class="btn btn-primary" type="submit">Купить</button>
+                        <a class="btn btn-primary" href="{{route('shop.bee2.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Купить</a>
                     </form>
                 </div>
 
@@ -81,10 +75,7 @@
                         <h5 class="card-title">пчела матка</h5>
                         <p class="card-text">приносит меда </br>50 кг/час</p>
                         <p class="card-text">Цена 500 золота</p>
-                        <p class="card-text">Максимум можно купить 5  шт</p>
-                        <input type="hidden" name="id" value="3">
-                        <input  type="number" name="countBee" placeholder="сколько" class="form-control" id="exampleInputPassword1">
-                        <button class="btn btn-primary" type="submit">Купить</button>
+                        <a class="btn btn-primary" href="{{route('shop.bee3.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Купить</a>
                     </form>
                 </div>
             </div>
