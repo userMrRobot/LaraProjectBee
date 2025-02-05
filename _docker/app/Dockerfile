@@ -30,3 +30,4 @@ RUN curl -sS https://getcomposer.org/installer | php -- \
 
 # Устанавливаем рабочую директорию
 WORKDIR /var/www
+
