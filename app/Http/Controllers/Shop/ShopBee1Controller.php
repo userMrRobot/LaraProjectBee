@@ -19,7 +19,7 @@ class ShopBee1Controller extends Controller
         $bee->update(['max_bee_1' => $max_bee_1]);
 
 
-        return view('Shop.editBee1', compact('bee', 'max_bee_1', 'money'));
+        return view('shop.editBee1', compact('bee', 'max_bee_1', 'money'));
     }
 
     public function update(User $user, ShopBeeRequest $request)

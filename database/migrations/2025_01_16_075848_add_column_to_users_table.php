@@ -12,7 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->unsignedBigInteger('telephone_number')->after('name')->default(89788888888);
+            $table->string('telephone_number')->after('name')->default(89788888888);
         });
     }
 

@@ -1,0 +1,20 @@
+<?php
+
+namespace App\Http\Controllers\Shop;
+
+use App\Http\Controllers\Controller;
+use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+class IndexController extends Controller
+{
+    public function __invoke()
+    {
+        $user = User::query()->findOrFail(Auth::user()->id);
+        $money = $user->money;
+        $bee = $user->bee;
+
+        return view('shop.index', compact('money', 'bee'));
+    }
+}

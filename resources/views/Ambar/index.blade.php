@@ -11,7 +11,7 @@
         <div class="col-lg-5 cart-if">
             <div class="cart-info-text">
                 <p>Псевдоним</p>
-                <p>{{\Illuminate\Support\Facades\Auth::user()->name}}</p>
+                <p>{{$user->name}}</p>
             </div>
 
             <div class="cart-info-text">
@@ -38,7 +38,7 @@
     <div class="row">
         <div class="col-6 col-md-4 col-lg-4">
             <div class="card mb-3" style="width: 12rem;text-align: center;">
-                <img src="/img/cart1.png" class="card-img-top" alt="...">
+                <img src="{{asset('/img/cart1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">пчела-рабочая</h5>
                     <p class="card-text">Куплено:<span style="color: green;">
@@ -52,7 +52,7 @@
 
         <div class="col-6 col-md-4 col-lg-4">
             <div class="card mb-3" style="width: 12rem;text-align: center;">
-                <img src="/img/cart1.png" class="card-img-top" alt="...">
+                <img src="{{asset('/img/cart1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">пчела трутень</h5>
                     <p class="card-text">Куплено: <span style="color: green;">
@@ -66,7 +66,7 @@
 
         <div class="col-6 col-md-4 col-lg-4">
             <div class="card mb-3" style="width: 12rem;text-align: center;">
-                <img src="/img/cart1.png" class="card-img-top" alt="...">
+                <img src="{{asset('/img/cart1.png')}}" class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title">пчела матка</h5>
                     <p class="card-text">Куплено:<span style="color: green;">

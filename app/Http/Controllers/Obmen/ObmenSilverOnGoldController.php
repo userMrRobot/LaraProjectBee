@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Obmen;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Obmen\ObmenSilverOnGoldRequest;
+use App\Http\Requests\Obmen\SilverOnGold\ObmenGoldOnRubRequest;
 use App\Models\User;
 
 class ObmenSilverOnGoldController extends Controller
@@ -15,10 +15,10 @@ class ObmenSilverOnGoldController extends Controller
         $gold_max = (int)floor($money->silver / 1000);
         $money->update(['gold_max' => $gold_max]);
 
-        return view('Obmen.editSilverOnGold', compact('money', 'gold_max'));
+        return view('obmen.editSilverOnGold', compact('money', 'gold_max'));
     }
 
-    public function update(User $user, ObmenSilverOnGoldRequest $request)
+    public function update(User $user, ObmenGoldOnRubRequest $request)
     {
         $money = $user->money;
         $request->validated();

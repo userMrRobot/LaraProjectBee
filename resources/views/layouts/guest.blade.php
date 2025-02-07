@@ -25,7 +25,7 @@
         <div class="container-fluid">
 
             <a class="navbar-brand" href="{{route('bee.index')}}">
-                <img src="/img/icons8.png" style="width: 40px; height: 40px" alt="Logo">
+                <img src="{{asset('/img/icons8.png')}}" style="width: 40px; height: 40px" alt="Logo">
             </a>
 
 
@@ -36,8 +36,16 @@
 
                 <!-- Ссылки справа -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <a class="nav-link" href="{{route('register')}}">Регистрация</a>
-                    <a class="nav-link" href="{{route('login')}}">Войти</a>
+
+                    @auth()
+                    <form method="POST" action="{{ route('logout') }}">
+                        @csrf
+
+                        <button type="submit" class="size-12 text-white hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:white">
+                            {{ __('Выйти') }}
+                        </button>
+                    </form>
+                    @endauth
 {{--                    <li class="nav-item active">--}}
 {{--                        <a class="nav-link" href="{{route('register')}}">Регистрация</a>--}}
 {{--                    </li>--}}

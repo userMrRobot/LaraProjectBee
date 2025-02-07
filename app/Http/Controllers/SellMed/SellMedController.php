@@ -13,7 +13,7 @@ class SellMedController extends Controller
     {
         $money = $user->money;
         $bee = $user->bee;
-        return view('SellMed.editSellMed', compact( 'money', 'bee'));
+        return view('sellMed.editSellMed', compact( 'money', 'bee'));
     }
 
     public function update(User $user, SellMedRequest $request)

@@ -19,7 +19,7 @@ class ShopBee3Controller extends Controller
         $bee->update(['max_bee_3' => $max_bee_3]);
 
 
-        return view('Shop.editBee3', compact('bee', 'max_bee_3', 'money'));
+        return view('shop.editBee3', compact('bee', 'max_bee_3', 'money'));
     }
 
     public function update(User $user, ShopBeeRequest $request)

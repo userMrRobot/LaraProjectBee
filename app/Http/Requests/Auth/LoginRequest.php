@@ -32,6 +32,15 @@ class LoginRequest extends FormRequest
         ];
     }
 
+    public function messages(): array
+    {
+        return [
+            'email.required' => 'Введите ваш email.',
+            'email.email' => 'Введите корректный email.',
+            'password.required' => 'Введите ваш пароль.',
+            'password.min' => 'Пароль должен содержать минимум 8 символов.',
+        ];
+    }
     /**
      * Attempt to authenticate the request's credentials.
      *

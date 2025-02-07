@@ -6,20 +6,20 @@
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
           integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="{{asset('/css/style.css')}}">
     {{--    @yield('css')--}}
 
 
     <title>@yield('title', 'Страница')</title>
-{{--    Разберись с фавиконом--}}
-    <link rel=”icon” href=”/img/pchela.ico”>
+    {{--    Разберись с фавиконом--}}
+    <link rel=”icon” href=”{{asset('/img/pchela.ico')}}”>
 </head>
 <body>
 <!-- header -->
 <header>
     <nav class="navbar navbar-expand-lg bg-body-tertiary" data-bs-theme="dark">
         <div class="container-fluid">
-            <a class="navbar-brand" href="/"><img src="/img/icons8.png" width="30px" height="30px" alt=""></a>
+            <a class="navbar-brand" href="/"><img src="{{asset('/img/icons8.png')}}" width="30px" height="30px" alt=""></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
                     aria-expanded="false" aria-label="Toggle navigation">
@@ -27,16 +27,14 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    @if (\Illuminate\Support\Facades\Auth::user()->role === 2)
+                    @if (auth()->user()->role === 2)
                         <li class="nav-item">
-                            <a class="nav-link active" style="font-size: 17px;" href="/admin">Админ Панель</a>
+                            <a class="nav-link active" style="font-size: 17px;" href="{{route('admin.index')}}">Админ Панель</a>
                         </li>
                     @endif
                     <li class="nav-item">
-                        <a class="nav-link active" style="font-size: 17px;" aria-current="page" href="/infa">О сайте</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link active" style="font-size: 17px;" href="/rules">Правила</a>
+                        <a class="nav-link active" style="font-size: 17px;" aria-current="page"
+                           href="{{route('infa')}}">О сайте</a>
                     </li>
 
 
@@ -47,7 +45,7 @@
                         <a class="nav-link active" style="font-size: 17px;" aria-current="page" href="/"></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link active" href="#">{{ \Illuminate\Support\Facades\Auth::user()->name }}</a>
+                        <a class="nav-link active" href="#">{{ auth()->user()->name }}</a>
                     </li>
                     <li class="nav-item dropdown me">
                         <form action="{{route('logout')}}" method="post">
@@ -80,7 +78,7 @@
     background-position: 0 0;
     background-size:  100%;
     background-repeat: no-repeat;
-    background-image: url('/img/beeFon.jpg');">
+    background-image: url({{asset('/img/beeFon.jpg')}});">
 
                 </div>
             </div>
@@ -91,7 +89,7 @@
 
                     <div class="navigation">
                         <div class="header-form"><h4
-                                style="color: #000306;">{{\Illuminate\Support\Facades\Auth::user()->name}}</h4></div>
+                                style="color: #000306;">{{auth()->user()->name}}</h4></div>
 
                         <div class="side-bar-navigation">
                             <a class="left-info btn btn-success2" href="{{route('lk.index')}}">Профиль</a>
@@ -114,16 +112,17 @@
                             <a class="left-info btn btn-success2" href="{{route('ambar.index')}}">Пасека</a>
                         </div>
                         <div class="side-bar-navigation">
-                            <a class="left-info btn btn-success2" href="{{route('sellmed.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Продажа меда</a>
+                            <a class="left-info btn btn-success2" href="{{route('sellMed.edit', auth()->user()->id)}}">Продажа
+                                меда</a>
                         </div>
-{{--                        <div class="side-bar-navigation">--}}
-{{--                            <a class="left-info btn btn-success2" href="{{route('deposit.index')}}">Пополнить баланс</a>--}}
+                        {{--                        <div class="side-bar-navigation">--}}
+                        {{--                            <a class="left-info btn btn-success2" href="{{route('deposit.index')}}">Пополнить баланс</a>--}}
 
-{{--                        </div>--}}
-{{--                        <div class="side-bar-navigation">--}}
-{{--                            <a class="left-info btn btn-success2" href="{{route('takeMoney.index')}}">Вывод средств</a>--}}
+                        {{--                        </div>--}}
+                        {{--                        <div class="side-bar-navigation">--}}
+                        {{--                            <a class="left-info btn btn-success2" href="{{route('takeMoney.index')}}">Вывод средств</a>--}}
 
-{{--                        </div>--}}
+                        {{--                        </div>--}}
                         <div class="side-bar-navigation">
                             <a class="left-info btn btn-success2" href="{{route('credit.index')}}">Играть в кредит</a>
 
@@ -133,7 +132,8 @@
 
 
                         <div class="side-bar-navigation">
-                            <a class="left-info btn btn-success2" href="{{route('daybonus.edit', \Illuminate\Support\Facades\Auth::user()->id)}}">Дневной бонус</a>
+                            <a class="left-info btn btn-success2" href="{{route('dayBonus.edit', auth()->user()->id)}}">Дневной
+                                бонус</a>
                         </div>
 
                     </div>
@@ -170,15 +170,21 @@
         </div>
 
 
-        <footer>
+    </div>
+</main>
 
+<footer class="bg-dark text-center" data-bs-theme="dark">
+    <p style="color: white">&copy; <span id="year"></span> Все права защищены.</p>
+    <hr style="border-color: white; width: 80%; margin: auto;">
 
-        </footer>
-
-        <script src="http://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
-        <script src="http://atuin.ru/demo/vide/jquery.vide.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-                integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-                crossorigin="anonymous"></script>
+</footer>
+<script src="http://code.jquery.com/jquery-1.12.4.min.js" type="text/javascript"></script>
+<script src="http://atuin.ru/demo/vide/jquery.vide.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
